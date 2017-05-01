@@ -1,16 +1,16 @@
 package me.softwarecraftsman.socketio;
-import io.socket.*;
+import io.socket.engineio.client.*;
+import io.socket.client.*;
+import io.socket.emitter.*;
 
 public class Main{
-  public static void main(String args[]){
-    System.out.println("Working");
-    /*
-    socket = IO.socket("http://localhost");
-    socket.on(Socket.EVENT_CONNECT, new Emitter.Listener() {
+  public static void main(String args[])throws Exception{
+    io.socket.client.Socket socket = IO.socket("http://localhost:3000");
+    socket.on(io.socket.client.Socket.EVENT_CONNECT, new Emitter.Listener() {
     
       @Override
         public void call(Object... args) {
-            socket.emit("foo", "hi");
+            socket.emit("chat message", "hello from java");
             socket.disconnect();
           }
     
@@ -19,13 +19,12 @@ public class Main{
       @Override
         public void call(Object... args) {}
     
-    }).on(Socket.EVENT_DISCONNECT, new Emitter.Listener() {
+    }).on(io.socket.client.Socket.EVENT_DISCONNECT, new Emitter.Listener() {
     
       @Override
         public void call(Object... args) {}
     
     });
     socket.connect();
-    */
   }
 }
