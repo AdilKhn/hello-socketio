@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="AppSpec" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-05-07T17:59:29" hostname="adils-mbp.lan" time="0.044">
+  <properties/>
+  <testcase name="socket gets a message on 'chat message'" classname="AppSpec" time="0.044"/>
+  <system-out><![CDATA[DOING SETUP]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

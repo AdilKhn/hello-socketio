@@ -27,4 +27,31 @@ public class Main{
     });
     socket.connect();
   }
+  
+
+  public static String mainMethod() throws Exception{
+    io.socket.client.Socket socket = IO.socket("http://localhost:3000");
+    //socket.on(io.socket.client.socket.event_connect, new emitter.listener() {
+    //
+    //  @override
+    //    public void call(object... args) {
+    //        socket.emit("chat message", "hello from java");
+    //      }
+    //
+    //}).on("chat message", new emitter.listener() {
+    //
+    //  @override
+    //    public void call(object... args) {
+    //      system.out.println("hello got a message"); 
+    //    }
+    //
+    //}).on(io.socket.client.socket.event_disconnect, new emitter.listener() {
+    //  @override
+    //    public void call(object... args) {}
+    //});
+    socket.connect();
+    socket.emit("chat message", "calling from groovy" );
+    socket.disconnect();
+    return  "done";
+  }
 }
