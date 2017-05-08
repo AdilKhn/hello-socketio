@@ -1,45 +1,26 @@
 import spock.lang.Specification
 
-import me.softwarecraftsman.socketio.Main;
 import io.socket.client.IO;
 import io.socket.emitter.Emitter;
 import io.socket.client.Socket;
 
 class AppSpec extends Specification {
-  def setupSpec(){
-    print 'DOING SETUP'
-  }
-  def sendMessage(){
-    return 'hello from socketio'
-  }
 
-  def "socket gets a message on 'chat message'"() {
-    def recievedString = sendMessage()
-      Socket socket = IO.socket("http://localhost:3000");
-    socket.connect();
-    Thread.sleep(300);
-    socket.emit("chat message", "calling from groovy");
-    Thread.sleep(300);
-    socket.disconnect();
-    expect: 'done' == 'done'
-  }
-
-
-  def "send and recieve"(){
+  def "send a message and recieve a response"(){
     def retVal = '';
-      Socket socket = IO.socket("http://localhost:3000");
+    Socket socket = IO.socket("http://localhost:3000");
     socket.on(io.socket.client.Socket.EVENT_CONNECT, new Emitter.Listener() {
 
         @Override
         public void call(Object... args) {
-        socket.emit("chat message", "hello from java");
+        socket.emit("chat message", "sending from spock spec");
         }
 
         }).on("chat message", new Emitter.Listener() {
 
           @Override
           public void call(Object... args) {
-           System.out.println(args[0]);
+           println(args[0]);
            retVal = args[0];
           }
 
@@ -51,7 +32,6 @@ class AppSpec extends Specification {
       });
      socket.connect();
      Thread.sleep(300);
-     expect: retVal == 'Got this: hello from java'
-     
+     expect: retVal == 'Got this: sending from spock spec'
   }
 }
